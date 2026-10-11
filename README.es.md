@@ -6,6 +6,9 @@ Red simulada con múltiples VLAN que transporta datos IoT mediante **MQTT**. Un 
 
 ![Topología](topology/topology.png)
 
+
+https://github.com/user-attachments/assets/fcb22f8a-aee1-4f80-ae79-634b809df3fa
+
 ## Escenario
 
 Casa inteligente de dos plantas (planta baja y planta alta, más patio/jardín y cochera). R1 (`R1-CASA`) es el router de la casa y R2 (`R2-ISP`) cumple el rol del proveedor de internet. La casa tiene luces, cámaras web, detector de humo, monitor de nivel de agua, termostato, sirena, sensor de movimiento y otros dispositivos IoT, conectados mediante switches y puntos de acceso inalámbricos. El broker MQTT corre en `SRV-MQTT`.
