@@ -1,6 +1,5 @@
 # IoT sobre MQTT: despliegue de red inteligente en Cisco Packet Tracer
 
-> Proyecto ABP 2026 · Redes e Internet de las Cosas
 > 🇬🇧 [English version](README.md)
 
 Red simulada con múltiples VLAN que transporta datos IoT mediante **MQTT**. Un dispositivo IoT (cámara) está conectado a una **SBC** (placa de desarrollo) que publica en un **broker MQTT**; una laptop suscripta al mismo topic recibe los datos.
