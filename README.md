@@ -1,3 +1,6 @@
+
+
+
 # IoT over MQTT: Smart Network Deployment in Cisco Packet Tracer
 
 > 🇦🇷 [Versión en castellano](README.es.md)
@@ -5,6 +8,8 @@
 A simulated multi-VLAN network that carries IoT data over **MQTT**. An IoT device (camera) is attached to an **SBC** (single-board computer) that publishes to an **MQTT broker**; a laptop subscribed to the same topic receives the data.
 
 ![Topology](topology/topology.png)
+
+https://github.com/user-attachments/assets/d0e55f66-36d0-40eb-b8ba-0465c00df849
 
 ## Scenario
 
