@@ -1,5 +1,17 @@
 # IoT sobre MQTT: despliegue de red inteligente en Cisco Packet Tracer
 
+## Autores
+
+**Grupo 11** · Instituto Superior Politécnico Córdoba (ISPC)
+Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial · *Redes e IoT* · Comisión B.2 · 2026
+Docente: Violi, Dante
+
+| | Nombre |
+|---|---|
+| 👤 | **Emiliano Sferco** |
+| 👤 | **Artem Sukhovetskii** |
+| 👤 | **Ivanna Tocci** |
+
 > 🇬🇧 [English version](README.md)
 
 Red simulada con múltiples VLAN que transporta datos IoT mediante **MQTT**. Un dispositivo IoT (cámara) está conectado a una **SBC** (placa de desarrollo) que publica en un **broker MQTT**; una laptop suscripta al mismo topic recibe los datos.
