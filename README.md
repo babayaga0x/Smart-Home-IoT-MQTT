@@ -1,7 +1,16 @@
-
-
-
 # IoT over MQTT: Smart Network Deployment in Cisco Packet Tracer
+
+## Authors
+
+**Group 11** · Instituto Superior Politécnico Córdoba (ISPC)
+Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial · *Redes e IoT* · Comisión B.2 · 2026
+Instructor: Violi, Dante
+
+| | Name |
+|---|---|
+| 👤 | **Emiliano Sferco** |
+| 👤 | **Artem Sukhovetskii** |
+| 👤 | **Ivanna Tocci** |
 
 > 🇦🇷 [Versión en castellano](README.es.md)
 
