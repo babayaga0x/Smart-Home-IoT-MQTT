@@ -1,21 +1,15 @@
-# Troubleshooting
+# Notes
 
-## Problem: SBC could not reach VLAN 40 / MQTT broker
+## How the data flows
 
-**Symptom:** the SBC could not ping the VLAN 40 gateway (`192.168.40.1`) or the MQTT broker (`192.168.40.10`). Because of this, the MQTT client written in Python could not be tested.
-
-**Note:** the camera is connected to IoT port D0 of the SBC, so its communication is not verified with IP ping.
-
-## Solution
-
-The camera is the IoT device and the SBC works as an intermediary: the camera has no MQTT client of its own, so the SBC connects to the network and to the broker and publishes the data for it.
+The camera is the IoT device and the SBC works as an intermediary: the camera has no MQTT client of its own, so the SBC connects to the network (over Wi-Fi, through AP3-EXTERIOR) and to the broker and publishes the data for it.
 
 ```
-Camera → SBC → MQTT Broker → Laptop1
+Camera → SBC2 → MQTT Broker → Laptop1
 ```
 
-1. **Laptop1** subscribes to the topic `iot/temperature`.
-2. The **SBC** publishes data on the topic `iot/temperature`.
+1. **Laptop1** subscribes to the topic `iot/camara`.
+2. **SBC2** publishes `estado=activa` on the topic `iot/camara` with its MQTT client.
 3. The **MQTT broker** receives the data and forwards it to the subscriber.
 4. **Laptop1** receives the data.
 

@@ -28,7 +28,7 @@ DHCP pools `VLAN10`, `VLAN20`, `VLAN30` live on R1 and hand out the gateway and 
 | Device | IP | VLAN |
 |---|---|---|
 | MQTT Broker (Server-PT) | 192.168.40.10 | 40 |
-| SBC2 (publisher) | 192.168.20.50 | 20 |
+| SBC2 (publisher, Wi-Fi via AP3-EXTERIOR) | DHCP | 20 |
 | Laptop1 – Sala Técnica (subscriber) | 192.168.10.23 (DHCP) | 10 |
 
 The publisher (VLAN 20), the subscriber (VLAN 10) and the broker (VLAN 40) are in different VLANs: MQTT traffic between them is routed by R1 (router-on-a-stick).
@@ -37,4 +37,4 @@ Device configurations: [`configs/R1.txt`](../configs/R1.txt), [`configs/R2.txt`]
 
 ## Justification of VLAN segmentation
 
-SBC2 is connected over Ethernet to VLAN 20 and uses the IP address `192.168.20.50`. This lets the device communicate with the other hosts of its segment. VLAN membership depends on the logical configuration of the switch port, not on the physical medium used for the connection. SBC2 acts as an intermediary with a client-type connection (the camera is attached to its IoT port), so it sits in the client VLAN, while VLAN 30 is intended for the other IoT devices and VLAN 40 hosts infrastructure services, including the MQTT broker.
+SBC2 connects wirelessly through AP3-EXTERIOR and gets its address from the VLAN 20 DHCP pool. This lets the device communicate with the other hosts of its segment. SBC2 acts as an intermediary with a client-type connection (the camera is attached to its IoT port), so it sits in the client VLAN, while VLAN 30 is intended for the other IoT devices and VLAN 40 hosts infrastructure services, including the MQTT broker.

@@ -28,7 +28,7 @@ Los pools DHCP `VLAN10`, `VLAN20` y `VLAN30` están en R1 y entregan el gateway 
 | Dispositivo | IP | VLAN |
 |---|---|---|
 | Broker MQTT (Server-PT) | 192.168.40.10 | 40 |
-| SBC2 (publicador) | 192.168.20.50 | 20 |
+| SBC2 (publicador, Wi-Fi vía AP3-EXTERIOR) | DHCP | 20 |
 | Laptop1 – Sala Técnica (suscriptor) | 192.168.10.23 (DHCP) | 10 |
 
 El publicador (VLAN 20), el suscriptor (VLAN 10) y el broker (VLAN 40) están en VLAN distintas: R1 rutea el tráfico MQTT entre ellas (router-on-a-stick).
@@ -37,6 +37,6 @@ Configuraciones: [`configs/R1.txt`](../../configs/R1.txt), [`configs/R2.txt`](..
 
 ## Justificación de la segmentación VLAN
 
-La placa SBC2 está conectada mediante Ethernet a la VLAN 20 y utiliza la dirección IP `192.168.20.50`. Esta decisión permite que el dispositivo se comunique con los equipos de su segmento de red. La pertenencia a una VLAN depende de la configuración lógica del puerto del switch y no del medio físico utilizado para la conexión.
+La placa SBC2 se conecta de forma inalámbrica mediante AP3-EXTERIOR y obtiene su dirección del pool DHCP de la VLAN 20. Esto permite que el dispositivo se comunique con los equipos de su segmento de red.
 
 La SBC2 actúa como intermediaria con una conexión de tipo cliente (la cámara está conectada a su puerto IoT), por eso se ubica en la VLAN de clientes, mientras que la VLAN 30 se destina a los demás dispositivos IoT y la VLAN 40 aloja los servicios de infraestructura, incluido el broker MQTT.

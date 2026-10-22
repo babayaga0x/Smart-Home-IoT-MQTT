@@ -28,10 +28,10 @@ Casa inteligente de dos plantas (planta baja y planta alta, más patio/jardín y
 ## Flujo de datos
 
 ```
-Cámara ──(puerto IoT D0)──> SBC ──(publica MQTT)──> Broker MQTT (VLAN 40) ──> Laptop1 (suscriptora)
+Cámara ──(puerto IoT D0)──> SBC2 ──(Wi-Fi, AP3-EXTERIOR)──> R1 ──> Broker MQTT (VLAN 40) ──> Laptop1 (suscriptora)
 ```
 
-La cámara no tiene un cliente MQTT propio, por lo que la SBC actúa como intermediaria: se conecta a la red y publica en su nombre.
+La cámara no tiene un cliente MQTT propio, por lo que la SBC actúa como intermediaria: se conecta a la red por Wi-Fi y publica en su nombre.
 
 ## Requisitos cubiertos
 
@@ -52,15 +52,16 @@ La cámara no tiene un cliente MQTT propio, por lo que la SBC actúa como interm
 - Ruteo estático entre R1 y R2 por `10.0.0.0/30`
 - Acceso inalámbrico con 4 APs
 - Broker MQTT en un Server-PT (`192.168.40.10:1883`, VLAN 40, gateway `192.168.40.1`) usando el script *MQTT Broker (Python)* incluido en Packet Tracer, sin modificar y sin autenticación
-- Publicador (SBC) y suscriptor (Laptop1) en el topic `iot/temperature`
+- Publicador (SBC2) y suscriptor (Laptop1) en el topic `iot/camara`, mensaje `estado=activa`
+- Dispositivos IoT registrados en el IoT Server del mismo Server-PT (`http://192.168.40.10/home.html`)
 
-Detalle: [VLAN y direccionamiento](docs/es/addressing.md) · [MQTT](docs/es/mqtt.md) · [Problemas y soluciones](docs/es/troubleshooting.md)
+Detalle: [VLAN y direccionamiento](docs/es/addressing.md) · [MQTT](docs/es/mqtt.md) · [Notas](docs/es/troubleshooting.md)
 
 ## Cómo ejecutarlo
 
 1. Abrir `topology/Proyecto.pkt` en Cisco Packet Tracer.
 2. Abrir **Laptop1** y suscribirse al topic.
-3. En la **SBC**, publicar en el broker (cliente MQTT o script Python).
+3. En la **SBC2**, abrir el cliente MQTT y publicar `estado=activa` en `iot/camara`.
 4. Verificar que Laptop1 recibe los mensajes. También se puede usar el modo Simulación para ver los paquetes.
 
 ## Verificación
@@ -75,17 +76,16 @@ Detalle: [VLAN y direccionamiento](docs/es/addressing.md) · [MQTT](docs/es/mqtt
 
 | Paso | Captura |
 |---|---|
-| Laptop1 (Sala Técnica) se suscribe a `iot/temperature` | ![Laptop1 suscripción](evidence/01-laptop1-subscribe.png) |
-| SBC2 publica `temperature=26` con el cliente MQTT | ![SBC2 publica](evidence/02-sbc2-publish.png) |
-| Consola Python: conectada al broker `192.168.40.10`, suscripta a `iot/temperature` | ![Consola Python](evidence/03-python-console-broker-connected.jpeg) |
-| Laptop1 recibe `temperature=26` en `iot/temperature` (Messages y Event Log) | ![Laptop1 recibe](evidence/05-laptop1-receives.png) |
-| Cámara del patio conectada a SBC2; AP3-EXTERIOR y SW5-EXTERIOR | ![Dispositivos del patio](evidence/04-patio-camera-sbc-ap.jpeg) |
+| Laptop1 (Sala Técnica) se suscribe a `iot/camara` | ![Laptop1 suscripción](evidence/01-laptop1-subscribe.png) |
+| SBC2 publica `estado=activa` en `iot/camara` con el cliente MQTT | ![SBC2 publica](evidence/02-sbc2-publish.png) |
+| Laptop1 recibe `estado=activa` en `iot/camara` (Messages y Event Log) | ![Laptop1 recibe](evidence/03-laptop1-receives.png) |
+| Dispositivos IoT registrados en el IoT Server (incluida la cámara del patio) | ![Dispositivos en IoT Server](evidence/04-iot-server-devices.png) |
 
 ## Estructura del repositorio
 
 ```
 ├── topology/    Archivo de Packet Tracer e imagen de la topología
-├── docs/        Direccionamiento, MQTT, problemas (docs/es/ = español)
+├── docs/        Direccionamiento, MQTT, notas (docs/es/ = español)
 ├── configs/     R1.txt, R2.txt (running-configs)
 └── evidence/    Capturas de las pruebas
 ```
@@ -94,6 +94,3 @@ Detalle: [VLAN y direccionamiento](docs/es/addressing.md) · [MQTT](docs/es/mqtt
 
 Cisco Packet Tracer · VLAN / troncales 802.1Q · router-on-a-stick · ruteo estático · DHCP · Wi-Fi · MQTT · Python (SBC)
 
-## Autores
-
-Martín Daniels
