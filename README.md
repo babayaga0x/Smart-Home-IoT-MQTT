@@ -95,4 +95,4 @@ Evidence (screenshots) lives in [`evidence/`](evidence/).
 
 ## Tech
 
-Cisco Packet Tracer · VLAN / 802.1Q trunking · router-on-a-stick · static routing · DHCP · Wi-Fi · MQTT · Python (SBC)
+Cisco Packet Tracer · VLAN / 802.1Q trunking · router-on-a-stick · static routing · DHCP · Wi-Fi · MQTT · Python (broker)
