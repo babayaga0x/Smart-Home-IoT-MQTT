@@ -92,5 +92,5 @@ Detalle: [VLAN y direccionamiento](docs/es/addressing.md) · [MQTT](docs/es/mqtt
 
 ## Tecnologías
 
-Cisco Packet Tracer · VLAN / troncales 802.1Q · router-on-a-stick · ruteo estático · DHCP · Wi-Fi · MQTT · Python (SBC)
+Cisco Packet Tracer · VLAN / troncales 802.1Q · router-on-a-stick · ruteo estático · DHCP · Wi-Fi · MQTT · Python (broker)
 
