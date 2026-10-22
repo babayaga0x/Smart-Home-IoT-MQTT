@@ -16,7 +16,8 @@ Instructor: Violi, Dante
 
 A simulated multi-VLAN network that carries IoT data over **MQTT**. An IoT device (camera) is attached to an **SBC** (single-board computer) that publishes to an **MQTT broker**; a laptop subscribed to the same topic receives the data.
 
-![Topology](topology/topology.png)
+<img width="959" height="641" alt="image" src="https://github.com/user-attachments/assets/81a4c5fa-508e-4490-a48d-81b88caaa71e" />
+
 
 
 https://github.com/user-attachments/assets/d0e55f66-36d0-40eb-b8ba-0465c00df849
